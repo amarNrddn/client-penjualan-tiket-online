@@ -14,7 +14,10 @@ const CategoriesForm = ({ form, hendeleChange, hendeleSubmit, edit, isLoading })
                 label={'Nama Kategori'}
                 onChange={hendeleChange}
             />
-            <SButton action={hendeleSubmit} loading={isLoading}>
+            <SButton
+                action={hendeleSubmit}
+                loading={isLoading}
+            >
                 {edit ? 'Ubah' : 'Simpan'}
             </SButton>
         </Form>

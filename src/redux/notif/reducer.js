@@ -1,6 +1,6 @@
-import { CLEAR_NOTIF, SET_NOTIF } from "./constans";
+import { CLEAR_NOTIF, SET_NOTIF } from './constans';
 
-let initialState = { status: false, typeNotif: '', message: null }
+let initialState = { status: false, typeNotif: '', message: null };
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {

@@ -1,4 +1,4 @@
-import React, {useState } from 'react'
+import React, { useState } from 'react'
 import { Container } from 'react-bootstrap'
 import Form from './form'
 import SBreadcrumbs from '../../components/Breadcrumbs'
@@ -17,8 +17,8 @@ const CategoriesCreate = () => {
     })
     const [alert, setAlert] = useState({
         status: false,
-        type: '',
-        message: ''
+        message: "",
+        type: ""
     })
     const [isLoading, setIsLoading] = useState(false)
 
@@ -28,27 +28,37 @@ const CategoriesCreate = () => {
 
 
     const hendeleSubmit = async () => {
-        setIsLoading(true)
         try {
-            const res = await postData('/cms/categories', form)
+            setIsLoading(true);
+            const res = await postData('/cms/categories', form);
             dispatch(
                 setNotif(
                     true,
                     'success',
-                    `Berhasil menambahkan kategori`
+                    `berhasil tambah kategori ${res.data.data.name}`
                 )
-            )
-            console.log({res})
-            navigate('/categories')
-            setIsLoading(false)
+            );
+            if (res?.data?.data) {
+                dispatch(
+                    setNotif(
+                        true,
+                        'success',
+                        `berhasil tambah kategori ${res.data.data.name}`
+                    )
+                );
+                navigate('/categories');
+                setIsLoading(false);
+            } else {
+                setIsLoading(false);
+                setAlert({
+                    ...alert,
+                    status: true,
+                    type: 'danger',
+                    message: res.response.data.msg,
+                });
+            }
         } catch (error) {
             setIsLoading(false);
-            setAlert({
-                ...alert,
-                status: true,
-                message: error.response.data.msg,
-                type: 'danger',
-            });
         }
     }
 

@@ -41,7 +41,6 @@ const Sigin = () => {
             navigate('/')
         } catch (error) {
             const failed = res.response.data.msg
-
             setLoading(false)
             if(failed) {
                 setAlert({

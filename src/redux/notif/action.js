@@ -1,16 +1,16 @@
-import { CLEAR_NOTIF, SET_NOTIF } from "./constans";
+import { CLEAR_NOTIF, SET_NOTIF } from './constans';
 
-export const setNotif = ({ status, typeNotif, message }) => {
+export function setNotif(status, typeNotif, message) {
     return {
         type: SET_NOTIF,
         status,
         typeNotif,
         message,
-    }
+    };
 }
 
-export const clearNotif = () => {
+export function clearNotif() {
     return {
-        type: CLEAR_NOTIF
-    }
+        type: CLEAR_NOTIF,
+    };
 }
