@@ -9,7 +9,7 @@ const CategoriesRoute = () => {
         <Routes>
             <Route path="/" element={<CategoriesPage />} />
             <Route path='/create' element={<CategoriesCreate />} />
-            <Route path="/edit" element={<CategoriesEdit />} />
+            <Route path="/edit/:id" element={<CategoriesEdit />} />
         </Routes>
     )
 }

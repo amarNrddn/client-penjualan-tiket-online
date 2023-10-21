@@ -35,7 +35,6 @@ const Sigin = () => {
 
         try {
             const response = res
-           
             dispatch(userLogin(response.data.data.token, response.data.data.role))
             setLoading(false)
             navigate('/')

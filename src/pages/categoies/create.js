@@ -31,13 +31,6 @@ const CategoriesCreate = () => {
         try {
             setIsLoading(true);
             const res = await postData('/cms/categories', form);
-            dispatch(
-                setNotif(
-                    true,
-                    'success',
-                    `berhasil tambah kategori ${res.data.data.name}`
-                )
-            );
             if (res?.data?.data) {
                 dispatch(
                     setNotif(

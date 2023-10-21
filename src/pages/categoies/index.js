@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchCategories } from '../../redux/categories/action';
 import SAlert from '../../components/Alert';
 import Swal from 'sweetalert2';
-import { deletData } from '../../utils/fetch';
+import { deletData, getData } from '../../utils/fetch';
 import { setNotif } from '../../redux/notif/action';
 import { accessCategories } from '../../consts/access';
 
@@ -57,12 +57,13 @@ const CategoriesPage = () => {
             cancelButtonText: 'Batal',
         }).then(async (result) => {
             if (result.isConfirmed) {
-                const res = await deletData(`/cms/categories/${id}`);
+                const res = await deletData(`/cms/categories/${id}`)
+                console.log(res.data.data.name)
                 dispatch(
                     setNotif(
                         true,
                         'success',
-                        `berhasil hapus kategori ${res.data.data.name}`
+                        `Berhasil menghapus kategor ${res.data.data.name}`
                     )
                 );
                 dispatch(fetchCategories());

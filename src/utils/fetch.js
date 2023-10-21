@@ -32,7 +32,7 @@ export const postData = async (url, payload, formData) => {
             }
         })
     } catch (error) {
-       return handleError(error)
+        return handleError(error)
     }
 }
 
@@ -64,6 +64,6 @@ export const deletData = async (url) => {
             }
         })
     } catch (error) {
-        // hendeleError(error)
+        return handleError(error)
     }
 }
