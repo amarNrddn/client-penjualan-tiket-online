@@ -57,13 +57,12 @@ const CategoriesPage = () => {
             cancelButtonText: 'Batal',
         }).then(async (result) => {
             if (result.isConfirmed) {
-                const res = await deletData(`/cms/categories/${id}`)
-                console.log(res.data.data.name)
+                await deletData(`/cms/categories/${id}`)
                 dispatch(
                     setNotif(
                         true,
                         'success',
-                        `Berhasil menghapus kategor ${res.data.data.name}`
+                        `Berhasil menghapus kategori`
                     )
                 );
                 dispatch(fetchCategories());

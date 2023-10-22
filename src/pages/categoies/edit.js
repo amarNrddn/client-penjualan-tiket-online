@@ -6,7 +6,7 @@ import Form from './form'
 import { useParams } from 'react-router-dom'
 
 const CategoriesEdit = () => {
-  const { categoryId } = useParams()
+  const {id } = useParams()
   const [form, setForm] = useState({
     name: ""
   })
@@ -16,14 +16,15 @@ const CategoriesEdit = () => {
   }
 
   const fetchDataCategory = async () => {
-    const res = await getData(`/cms/categories/${categoryId}`)
-    console.log(res)
-    // setForm({...form, name: res.data.data.name})
+    const res = await getData(`/cms/categories/${id}`)
+    
+    setForm({...form, name: res.data.data.name})
   }
 
   useEffect(() => {
     fetchDataCategory()
-  })
+  }, [])
+
   return (
     <>
       <Container >
