@@ -48,7 +48,7 @@ export const putData = async (url, payload) => {
             }
         })
     } catch (error) {
-        // hendeleError(error)
+        return handleError(error)
     }
 }
 

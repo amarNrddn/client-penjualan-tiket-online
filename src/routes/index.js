@@ -1,6 +1,4 @@
 import React from 'react'
-import { Navigate, Route, Routes } from 'react-router-dom'
-
 import GuestOnlyRoute from '../components/GuestOnlyRoute'
 import GuardRoute from '../components/GuardRoute'
 
@@ -8,7 +6,9 @@ import Sigin from '../pages/sigin'
 import SNavbar from '../components/Navbar'
 import HomeRoute from './HomeRoute'
 import CategoriesRoute from './CategoriesRoute'
+import TalentsRoute from './TalentsRoute'
 
+import { Navigate, Route, Routes } from 'react-router-dom'
 
 const AppRoutes = () => {
     return (
@@ -34,6 +34,7 @@ const AppRoutes = () => {
                 <Route path="dashboard/*" element={<HomeRoute />} />
                 <Route path='/' element={<Navigate to="/dashboard" replace={true} />} />
                 <Route path="categories/*" element={<CategoriesRoute />} />
+                <Route path='talent/*' element={<TalentsRoute/>} />
             </Route>
         </Routes>
     )

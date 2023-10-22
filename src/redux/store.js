@@ -11,6 +11,7 @@ import notifReducer  from './notif/reducer'
 
 const composerEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+// global state
 const rootReducers = combineReducers({
     auth: authReducer,
     categories: categoriesReducer,
