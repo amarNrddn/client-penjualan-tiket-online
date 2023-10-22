@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Container } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import SAlert from '../../components/Alert';
+import Swal from 'sweetalert2';
 import SBreadcrumbs from '../../components/Breadcrumbs';
 import SButton from '../../components/Button';
 import Table from '../../components/TableWithAction';
+
+import { Container } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCategories } from '../../redux/categories/action';
-import SAlert from '../../components/Alert';
-import Swal from 'sweetalert2';
-import { deletData, getData } from '../../utils/fetch';
+import { deletData} from '../../utils/fetch';
 import { setNotif } from '../../redux/notif/action';
 import { accessCategories } from '../../consts/access';
 

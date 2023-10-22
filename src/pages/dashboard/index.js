@@ -1,6 +1,7 @@
 import React from 'react'
-import { Container } from 'react-bootstrap'
 import SBreadcrumbs from '../../components/Breadcrumbs';
+
+import { Container } from 'react-bootstrap'
 
 const Dashboard = () => {
     return (

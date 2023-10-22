@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { Container } from 'react-bootstrap'
-import Form from './form'
 import SBreadcrumbs from '../../components/Breadcrumbs'
+import Form from './form'
 import SAlert from '../../components/Alert'
+
+import { Container } from 'react-bootstrap'
 import { postData } from '../../utils/fetch'
 import { useDispatch } from 'react-redux'
 import { setNotif } from '../../redux/notif/action'

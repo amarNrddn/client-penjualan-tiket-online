@@ -1,7 +1,8 @@
 import React from 'react'
-import { Form } from 'react-bootstrap'
 import SButton from '../../components/Button'
 import TextInputWhitLabel from '../../components/TextInputWhitLabel'
+
+import { Form } from 'react-bootstrap'
 
 const SForm = ({ form, hendeleOnchange, hendeleSubmit, loading }) => {
     return (
