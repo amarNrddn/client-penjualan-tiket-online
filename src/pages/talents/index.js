@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux/es/hooks/useSelector'
 import { useDispatch } from 'react-redux'
-import { fetchTalents } from '../../redux/talents/action'
+import { fetchTalents, setKeyword } from '../../redux/talents/action'
 import SearchInput from '../../components/SSearch'
-import { Container} from 'react-bootstrap'
-import  Table from '../../components/TableWithAction'
+import { Container } from 'react-bootstrap'
+import Table from '../../components/TableWithAction'
 import SBreadcrumbs from '../../components/Breadcrumbs'
 import { accessTalents } from '../../consts/access'
 
 const TalentsPage = () => {
   const dispatch = useDispatch()
   const talents = useSelector((state) => state.talents)
+
   const [access, setAccess] = useState({
     tambah: false,
     hapus: false,
@@ -36,7 +37,7 @@ const TalentsPage = () => {
 
   useEffect(() => {
     dispatch(fetchTalents())
-  }, [dispatch])
+  }, [dispatch, talents.keyword])
 
   const handleDelet = (id) => {
 
@@ -44,14 +45,17 @@ const TalentsPage = () => {
   return (
     <Container>
       <SBreadcrumbs textSecound={'Talents'} />
-      <SearchInput />
+      <SearchInput
+        query={talents.keyword}
+        hendeleChange={(e) => dispatch(setKeyword(e.target.value))}
+      />
 
       <Table
         status={talents.status}
         thead={['Nama', 'Role', 'Avatar', 'Aksi']}
         data={talents.data}
-        tbody = {['name', 'role', 'avatar']}
-        edit={access.edit ? `/talents/edit` : null}
+        tbody={['name', 'role', 'avatar']}
+        editUrl={access.edit ? `/talents/edit` : null}
         deleteAction={access.hapus ? (id) => handleDelet(id) : null}
         withoutPagination
       />

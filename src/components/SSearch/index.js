@@ -6,6 +6,7 @@ const SearchInput = ({hendeleChange, query, disabled}) => {
         <Form.Group className='mb-3'>
             <Form.Control
                 type='text'
+                name='query'
                 value={query}
                 disabled={disabled}
                 onChange={hendeleChange}
