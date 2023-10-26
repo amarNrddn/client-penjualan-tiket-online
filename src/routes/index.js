@@ -34,7 +34,7 @@ const AppRoutes = () => {
                 <Route path="dashboard/*" element={<HomeRoute />} />
                 <Route path='/' element={<Navigate to="/dashboard" replace={true} />} />
                 <Route path="categories/*" element={<CategoriesRoute />} />
-                <Route path='talent/*' element={<TalentsRoute/>} />
+                <Route path="talents/*" element={<TalentsRoute/>} />
             </Route>
         </Routes>
     )

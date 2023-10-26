@@ -80,7 +80,7 @@ const CategoriesPage = () => {
                     className={'mb-3'}
                     action={() => navigate('/categories/create')}
                 >
-                    Tambah
+                    Add Categories
                 </SButton>
             )}
 

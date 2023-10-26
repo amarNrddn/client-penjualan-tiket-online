@@ -55,9 +55,9 @@ const SNavbar = () => {
                     <NavLink
                         role={role}
                         roles={accessTalents.lihat}
-                        action={() => navigate('/talent')}
+                        action={() => navigate('/talents')}
                     >
-                        Talent
+                        Talents
                     </NavLink>
                     <NavLink
                         role={role}
