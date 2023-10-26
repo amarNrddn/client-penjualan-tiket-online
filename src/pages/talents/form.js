@@ -7,8 +7,8 @@ import { config } from '../../config'
 
 const spekersForm = ({
     form,
-    handleChange,
-    handleSubmit,
+    hendeleChange,
+    hendeleSubmit,
     isLoading,
     edit
 }) => {
@@ -17,9 +17,9 @@ const spekersForm = ({
             <TextInputWhitLabel
                 value={form.name}
                 label={'Nama'}
-                name='nama'
+                name='name'
                 type='text'
-                onChange={handleChange}
+                onChange={hendeleChange}
                 placeholder={'Masukan Nama Pembicara'}
 
             />
@@ -28,32 +28,34 @@ const spekersForm = ({
                 label={'Role'}
                 name='role'
                 type='text'
-                onChange={handleChange}
+                onChange={hendeleChange}
                 placeholder={'Masukan Role'}
             />
             <TextInputWhitLabel
-                value={form.avatar}
+                // value={form.avatar}
                 label={'Avatar'}
+                name='avatar'
                 type='file'
-                onChange={handleChange}
+                onChange={hendeleChange}
                 placeholder={'Masukan Avatar'}
             />
 
             {form.avatar !== '' && (
                 <div>
-                    <Figure
-                        width={171}
-                        height={180}
-                        alt='171x189'
-                        src={`${config.api_image}/${form.avatar}`}
-                    >
+                    <Figure>
+                        <Figure.Image
+                            width={171}
+                            height={180}
+                            alt='171x189'
+                            src={`${config.api_image}/${form.avatar}`}
+                        />
                         <Figure.Caption>Preview Image Avatar</Figure.Caption>
                     </Figure>
                 </div>
             )}
 
             <SButton
-                action={handleSubmit}
+                action={hendeleSubmit}
                 loading={isLoading}
             >
                 {edit ? 'Ubah' : 'Simpan'}
