@@ -43,6 +43,13 @@ const TalentsEdit = () => {
     fetchDataTalents()
   }, [])
 
+  const uploadImage = async (file) => {
+    let formData = new FormData()
+    formData.append('avatar', file)
+    const res = await postData(`/cms/images`, formData, true)
+    return res
+  }
+
   const hendeleChange = async (e) => {
     if (e.target.name === 'avatar') {
       if (
@@ -91,12 +98,6 @@ const TalentsEdit = () => {
     }
   }
 
-  const uploadImage = async (file) => {
-    let formData = new FormData()
-    formData.append('avatar', file)
-    const res = await postData(`/cms/images`, formData, true)
-    return res
-  }
 
   const hendeleSubmit = async () => {
     setIsLoading(true)

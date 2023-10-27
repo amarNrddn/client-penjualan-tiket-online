@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Table from '../../components/TableWithAction'
 import SBreadcrumbs from '../../components/Breadcrumbs'
+import SButton from '../../components/Button'
+
 import { Container } from 'react-bootstrap'
 import { useSelector } from 'react-redux/es/hooks/useSelector'
 import { fetchPayments } from '../../redux/payments/action'
@@ -43,7 +45,13 @@ const PagePayments = () => {
     return (
         <Container>
             <SBreadcrumbs textSecound={'Payments'} />
-
+            {access.tambah && (
+                <SButton
+                    className={'mb-3'}
+                >
+                    Add Payment
+                </SButton>
+            )}
             <Table
                 status={payments.status}
                 thead={['Type', 'Avatar', 'Aksi']}
@@ -51,6 +59,7 @@ const PagePayments = () => {
                 tbody={['type', 'avatar']}
                 editUrl={access.edit ? `/payments/edit` : null}
                 deleteAction={access.hapus ? (id) => handleDelet(id) : null}
+                withoutPagination
             />
         </Container>
     )
