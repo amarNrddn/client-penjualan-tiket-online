@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import Form from './form'
-import { Container } from 'react-bootstrap'
+import SAlert from '../../components/Alert'
 import SBreadcrumbs from '../../components/Breadcrumbs'
+
+import { Container } from 'react-bootstrap'
 import { postData } from '../../utils/fetch'
 import { useNavigate } from 'react-router-dom'
 import { setNotif } from '../../redux/notif/action'
 import { useDispatch } from 'react-redux'
-import SAlert from '../../components/Alert'
 
 const TalentsCreate = () => {
   const navigate = useNavigate()
@@ -30,7 +31,7 @@ const TalentsCreate = () => {
     let formData = new FormData()
     formData.append('avatar', file)
     const res = await postData(`/cms/images`, formData, true)
-    console.log(res)
+
     return res
   }
 
@@ -58,7 +59,6 @@ const TalentsCreate = () => {
           })
         } else {
           const res = await uploadImage(e.target.files[0])
-          console.log(res)
           setForm({
             ...form,
             file: res.data.data._id,
@@ -86,7 +86,6 @@ const TalentsCreate = () => {
 
   const hendeleSubmit = async () => {
     setIsLoading(true)
-    console.log('active')
     try {
       const payload = {
         image: form.file,

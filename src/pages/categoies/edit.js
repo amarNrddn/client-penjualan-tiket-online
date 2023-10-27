@@ -41,39 +41,39 @@ const CategoriesEdit = () => {
 
   const hendeleSubmit = async () => {
     try {
-        setIsLoading(true);
-        const res = await putData(`/cms/categories/${id}`, form);
-        if (res?.data?.data) {
-            dispatch(
-                setNotif(
-                    true,
-                    'success',
-                    `berhasil Update kategori ${res.data.data.name}`
-                )
-            );
-            navigate('/categories');
-            setIsLoading(false);
-            console.log(res.response.data.msg)
-        } else {
-            setIsLoading(false);
-            setAlert({
-                ...alert,
-                status: true,
-                type: 'danger',
-                message: res.response.data.msg,
-            });
-            
-        }
-    } catch (error) {
+      setIsLoading(true);
+      const res = await putData(`/cms/categories/${id}`, form);
+      if (res?.data?.data) {
+        dispatch(
+          setNotif(
+            true,
+            'success',
+            `berhasil Update kategori ${res.data.data.name}`
+          )
+        );
+        navigate('/categories');
+        setIsLoading(false);
+        console.log(res.response.data.msg)
+      } else {
         setIsLoading(false);
         setAlert({
           ...alert,
           status: true,
           type: 'danger',
-          message: 'Harap priksa Kembali!!' ,
+          message: res.response.data.msg,
+        });
+
+      }
+    } catch (error) {
+      setIsLoading(false);
+      setAlert({
+        ...alert,
+        status: true,
+        type: 'danger',
+        message: 'Harap priksa Kembali!!',
       });
     }
-}
+  }
 
   return (
     <>

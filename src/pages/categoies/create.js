@@ -27,7 +27,6 @@ const CategoriesCreate = () => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
-
     const hendeleSubmit = async () => {
         try {
             setIsLoading(true);
