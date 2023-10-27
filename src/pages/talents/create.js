@@ -91,7 +91,7 @@ const TalentsCreate = () => {
       const payload = {
         image: form.file,
         name: form.name,
-        role: form.fole,
+        role: form.role,
       }
       const res = await postData('/cms/talents', payload)
       if (res?.data?.data) {
