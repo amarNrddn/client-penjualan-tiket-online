@@ -44,7 +44,7 @@ export const fetchCategories = () => {
 
             dispatch(
                 successFetchingCategories({
-                    categories: res.data.data,
+                    categories: res.data.data
                 })
             );
         } catch (error) {

@@ -36,7 +36,7 @@ const SNavbar = () => {
     return (
         <Navbar bg="dark" data-bs-theme="dark">
             <Container>
-                <Navbar.Brand href="#home">Semina</Navbar.Brand>
+                <Navbar.Brand href="#home">MARZKYY</Navbar.Brand>
                 <Nav className="me-auto">
                     <NavLink
                         role={role}
@@ -62,7 +62,7 @@ const SNavbar = () => {
                     <NavLink
                         role={role}
                         roles={accesPayments.lihat}
-                        action={() => navigate('/payment')}
+                        action={() => navigate('/payments')}
                     >
                         Payments
                     </NavLink>
