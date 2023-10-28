@@ -41,9 +41,13 @@ export const fetchPayments = () => {
 
             let res = await debounceFetchPayments('/cms/payment')
 
+            res.data.data.forEach((res) => {
+                res.avatar = res.image.name;
+            });
+            
             dispatch(
                 successFetchingPayment({
-                    payments: res.data.data
+                    payments: res.data.data,
                 })
             )
         } catch (error) {

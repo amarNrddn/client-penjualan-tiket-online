@@ -22,9 +22,9 @@ const PaymentForm = ({
                 placeholder={'Masukan Type'}
             />
             <TextInputWhitLabel
-                type='file'
                 label={'Avatar'}
                 name='avatar'
+                type='file'
                 onChange={hendeleChange}
                 placeholder={'Masukan Avatar'}
             />
@@ -34,10 +34,10 @@ const PaymentForm = ({
                         <Figure.Image
                             width={171}
                             height={180}
-                            alt='171x180'
+                            alt='171x189'
                             src={`${config.api_image}/${form.avatar}`}
                         />
-                        <Figure.Caption>Privew Image Avatar</Figure.Caption>
+                        <Figure.Caption>Preview Image Avatar</Figure.Caption>
                     </Figure>
                 </div>
             )}

@@ -1,17 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { getData, postData } from '../../utils/fetch'
+import { Container } from 'react-bootstrap'
 import Form from './form'
-import SBreadcrumbs from '../../components/Breadcrumbs'
+import { setNotif } from '../../redux/notif/action'
 import SAlert from '../../components/Alert'
 
-import { Container } from 'react-bootstrap'
-import { useParams } from 'react-router-dom'
-import { getData, postData, putData } from '../../utils/fetch'
-import { useNavigate } from 'react-router-dom'
-import { setNotif } from '../../redux/notif/action'
-import { useDispatch } from 'react-redux'
-
-const PageEditPayments = () => {
-    const { id } = useParams()
+const PageCreatePayment = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const [isLoading, setIsLoading] = useState(false)
@@ -27,21 +23,6 @@ const PageEditPayments = () => {
         type: '',
         message: ''
     })
-
-    const fetchOnePayment = async () => {
-        const res = await getData(`/cms/payment/${id}`)
-
-        setForm({
-            type: res.data.data.type,
-            avatar: res.data.data.image.name,
-            file: res.data.data.image._id,
-            role: res.data.data.role,
-        })
-    }
-
-    useEffect(() => {
-        fetchOnePayment()
-    }, [])
 
     const uploadImage = async (file) => {
         let formData = new FormData()
@@ -107,17 +88,17 @@ const PageEditPayments = () => {
                 type: form.type,
                 role: form.role
             }
-            const res = await putData(`/cms/payment/${id}`, payload)
+            const res = await postData(`/cms/payment`, payload)
 
             if (res?.data?.data) {
                 dispatch(
                     setNotif(
                         true,
                         'success',
-                        `Berhasil update Talent ${res.data.data.name}`
+                        `Berhasil Create Payment ${res.data.data.type}`
                     )
                 )
-                navigate('/talents')
+                navigate('/payments')
                 setIsLoading(false)
             } else {
                 setIsLoading(false)
@@ -134,16 +115,9 @@ const PageEditPayments = () => {
 
     return (
         <Container>
-            <SBreadcrumbs
-                textSecound={'payments'}
-                urlSecound={'/payments'}
-                textThrid={'Edit'}
-            />
 
             {alert.status && <SAlert type={alert.type} message={alert.message} />}
-
             <Form
-                edit
                 form={form}
                 isLoading={isLoading}
                 hendeleChange={hendeleChange}
@@ -153,4 +127,4 @@ const PageEditPayments = () => {
     )
 }
 
-export default PageEditPayments
+export default PageCreatePayment

@@ -15,7 +15,7 @@ export const getData = async (url, params) => {
             }
         })
     } catch (error) {
-        // hendeleError(error)
+        return handleError(error)
     }
 }
 
