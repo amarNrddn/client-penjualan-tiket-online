@@ -107,17 +107,18 @@ const PageEditPayments = () => {
                 type: form.type,
                 role: form.role
             }
+            
             const res = await putData(`/cms/payment/${id}`, payload)
 
-            if (res?.data?.data) {
+            if (res.data.data) {
                 dispatch(
                     setNotif(
                         true,
                         'success',
-                        `Berhasil update Talent ${res.data.data.name}`
+                        `Berhasil update Talent ${res.data.data.type}`
                     )
                 )
-                navigate('/talents')
+                navigate('/payments')
                 setIsLoading(false)
             } else {
                 setIsLoading(false)
