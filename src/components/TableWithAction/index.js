@@ -1,7 +1,8 @@
 import React from 'react'
-import { Table } from 'react-bootstrap'
 import Tbody from '../TbodyWIthAction'
 import Thead from '../Thead'
+
+import { Table } from 'react-bootstrap'
 
 const TableWithAction = ({
     withoutPagination,

@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { Container, Nav, Navbar } from 'react-bootstrap'
-import { useNavigate } from 'react-router-dom'
 import NavLink from '../NavAccess'
 import {
     accessCategories,
@@ -10,6 +8,9 @@ import {
     accesPayments,
     accessParticipant
 } from '../../consts/access'
+
+import { Container, Nav, Navbar } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 
 const SNavbar = () => {
     const navigate = useNavigate()

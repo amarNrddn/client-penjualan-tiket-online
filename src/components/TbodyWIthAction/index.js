@@ -1,9 +1,10 @@
 import React from 'react'
-import { Image, Spinner } from 'react-bootstrap'
+import SButton from '../Button'
 import Moment from 'moment'
+
+import { Image, Spinner } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { config } from '../../config'
-import SButton from '../Button'
 
 const TbodyWithAction = ({
     data,

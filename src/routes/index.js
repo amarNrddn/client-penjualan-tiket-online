@@ -8,6 +8,7 @@ import HomeRoute from './HomeRoute'
 import CategoriesRoute from './CategoriesRoute'
 import TalentsRoute from './TalentsRoute'
 import PaymentsRouter from './PaymentsRouter'
+import EventsRoute from './EventsRoute'
 
 import { Navigate, Route, Routes } from 'react-router-dom'
 
@@ -31,12 +32,12 @@ const AppRoutes = () => {
                     </>
                 }
             >
-
                 <Route path="dashboard/*" element={<HomeRoute />} />
                 <Route path='/' element={<Navigate to="/dashboard" replace={true} />} />
                 <Route path="categories/*" element={<CategoriesRoute />} />
                 <Route path="talents/*" element={<TalentsRoute />} />
                 <Route path='payments/*' element={<PaymentsRouter />} />
+                <Route path='events/*' element={<EventsRoute />} />
             </Route>
         </Routes>
     )

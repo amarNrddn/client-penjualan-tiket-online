@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
+import Form from './form'
+import SAlert from '../../components/Alert'
+
+import { setNotif } from '../../redux/notif/action'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { getData, postData } from '../../utils/fetch'
+import { postData } from '../../utils/fetch'
 import { Container } from 'react-bootstrap'
-import Form from './form'
-import { setNotif } from '../../redux/notif/action'
-import SAlert from '../../components/Alert'
 
 const PageCreatePayment = () => {
     const navigate = useNavigate()

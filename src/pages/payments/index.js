@@ -63,7 +63,7 @@ const PagePayments = () => {
                     setNotif(
                         true,
                         'success',
-                        `Berhasil menghapus Talents `
+                        `Berhasil menghapus Payments `
                     )
                 )
                 dispatch(fetchPayments())

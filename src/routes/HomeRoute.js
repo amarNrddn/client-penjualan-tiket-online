@@ -1,6 +1,7 @@
 import React from 'react'
-import { Routes, Route } from 'react-router-dom'
 import Dashboard from '../pages/dashboard'
+
+import { Routes, Route } from 'react-router-dom'
 
 const HomeRoute = () => {
     return (
