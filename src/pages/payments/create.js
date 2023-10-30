@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Form from './form'
 import SAlert from '../../components/Alert'
+import SBreadcrumbs from '../../components/Breadcrumbs'
 
 import { setNotif } from '../../redux/notif/action'
 import { useDispatch } from 'react-redux'
@@ -116,7 +117,11 @@ const PageCreatePayment = () => {
 
     return (
         <Container>
-
+            <SBreadcrumbs
+                textSecound={'payments'}
+                urlSecound={'/payments'}
+                textThrid={'create'}
+            />
             {alert.status && <SAlert type={alert.type} message={alert.message} />}
             <Form
                 form={form}
