@@ -29,12 +29,13 @@ export default function reducer(state= initialState, action) {
                 status: statuslist.success,
                 data: action.talents
             }
+
+        case SET_KEYWORD: 
+            return {...state, keyword: action.keyword}
         
         case ERROR_FETCHING_TALENTS: 
             return {...state, status: statuslist.error}
         
-        case SET_KEYWORD: 
-            return {...state, keyword: action.keyword}
             
         default:
             return state
