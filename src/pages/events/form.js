@@ -61,7 +61,7 @@ const EventsForm = ({
                         label={'category'}
                         placeholder={'Masukan kategori'}
                         value={form.category}
-                        options={lists.category}
+                        options={lists.categories}
                         isClearable={true}
                         hendleChange={(e) => hendleChange(e)}
                     />
