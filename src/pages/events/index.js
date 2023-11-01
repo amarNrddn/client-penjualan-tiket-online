@@ -39,6 +39,7 @@ const EventsPage = () => {
       <SBreadcrumbs textSecound={'Events'} />
       <SButton
         className={'mb-3'}
+        action={() => navigate('/events/create')}
       >
         Add Events
       </SButton>
