@@ -41,7 +41,7 @@ export const fetchListCategories = () => {
         dispatch(startFetchingListsCategories())
 
         try {
-            let res = debouncedFetchListsCategories('/cms/categories')
+            let res = await debouncedFetchListsCategories('/cms/categories')
 
             let _temp = []
 
@@ -54,7 +54,7 @@ export const fetchListCategories = () => {
             })
 
             dispatch(
-                startFetchingListsCategories({
+                successFetchingListsCategories({
                     categories: _temp
                 })
             )
@@ -90,7 +90,7 @@ export const fetchListTalents = () => {
         dispatch(startFetchingListsTalents())
 
         try {
-            const res = debounceFetchListsTalents('/cms/talents')
+            const res = await debounceFetchListsTalents('/cms/talents')
             let _temp = []
 
             res.data.data.forEach((res) => {
@@ -106,7 +106,7 @@ export const fetchListTalents = () => {
                     talents: _temp
                 })
             )
-            
+
         } catch (error) {
             dispatch(errorFetchingListsTalents())
         }
@@ -138,7 +138,7 @@ export const fetchListsEvents = () => {
         dispatch(startFetchingListsEvents())
 
         try {
-            const res = debounceFetchListsEvents('/cms/events')
+            const res = await debounceFetchListsEvents('/cms/events')
 
             let _temp = []
 

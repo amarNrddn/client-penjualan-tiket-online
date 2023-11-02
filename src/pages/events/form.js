@@ -121,10 +121,10 @@ const EventsForm = ({
                 <Col>
                     <SelectBox
                         name='talent'
-                        label={'Sepeker'}
+                        label={'Talent'}
                         placeholder={'Masukan Pembicara'}
                         value={form.talent}
-                        options={lists.talent}
+                        options={lists.talents}
                         isClearable={true}
                         hendleChange={(e) => hendleChange(e)}
                     />
@@ -169,7 +169,7 @@ const EventsForm = ({
                     </Col>
                     <Col sm={6}>
                         <TextInputWhitLabel
-                            name='harga'
+                            name='price'
                             type='number'
                             placeholder={'Masukan Harga'}
                             value={ticket.price}
@@ -214,7 +214,7 @@ const EventsForm = ({
                 </SButton>
             </div>
 
-            <SButton variant={'primary'} action={hendleSubmit} loading={isLoading}>
+            <SButton  action={hendleSubmit} loading={isLoading} >
                 {edit ? 'Ubah' : "Simpan"}
             </SButton>
 
