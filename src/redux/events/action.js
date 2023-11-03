@@ -42,15 +42,15 @@ export const fetchEvents = () => {
 
             let params = {
                 keyword: getState().events.keyword,
-                category: getState()?.events.category?.value || '',
-                talent: getState()?.events.talent?.value || ''
+                category: getState().events?.category?.value || '',
+                talent: getState().events?.talent?.value || ''
             }
 
             let res = await debounceFetchEvents('/cms/events', params)
 
             res.data.data.forEach((res) => {
                 res.categoryName = res?.category?.name ?? ''
-                res.talentName = res?.talent?.name ?? ''
+                res.talentName = res?.talent?.name ?? '_'
             })
 
             dispatch(

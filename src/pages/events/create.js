@@ -33,14 +33,13 @@ const PageCreateEvents = () => {
         tickets: [
             {
                 type: '',
-                status: '',
-                price: '',
+                statusTicketCategories: '',
                 stock: '',
-            }
+                price: '',
+            },
         ],
         category: '',
         talent: '',
-        stock: ''
     })
 
     useEffect(() => {
@@ -108,38 +107,48 @@ const PageCreateEvents = () => {
     const hendleSubmit = async () => {
         setIsLoading(true)
         try {
+            const _temp = [];
+            form.tickets.forEach((tic) => {
+                _temp.push({
+                    type: tic.type,
+                    statusTicketCategories: tic.statusTicketCategories.value,
+                    stock: tic.stock,
+                    price: tic.price,
+                });
+            });
+
             const payload = {
+                date: form.date,
+                image: form.file,
                 title: form.title,
                 price: form.price,
-                date: form.date,
                 about: form.about,
                 venueName: form.venueName,
-                image: form.file,
                 tagline: form.tagline,
                 keyPoint: form.keyPoint,
-                category: form.category,
-                talent: form.talent,
+                category: form.category.value,
+                talent: form.talent.value,
                 status: form.status,
-                tickets: form.tickets
+                tickets: _temp,
             }
+
             const res = await postData('/cms/events', payload)
 
             if (res.data.data) {
                 dispatch(
                     setNotif(
-                        ...alert,
                         true,
                         'success',
-                        'Berhasil menambahkan events '
+                        `Berhasil menambahkan events ${res.data.data.title}`
                     )
                 )
-                
                 navigate('/events')
                 setIsLoading(false)
             } else {
                 setIsLoading(false)
                 setAlert(
                     SAlert({
+                        ...alert,
                         status: true,
                         type: 'danger',
                         message: res.data.response.msg
@@ -156,14 +165,14 @@ const PageCreateEvents = () => {
 
         _temp[i] = e.target.value
 
-        setForm({...form, keyPoint: _temp})
+        setForm({ ...form, keyPoint: _temp })
     }
 
     const hendlePlusKeyPoint = () => {
         let _temp = [...form.keyPoint]
         _temp.push('')
 
-        setForm({...form, keyPoint: _temp})
+        setForm({ ...form, keyPoint: _temp })
     }
 
     const hendleMinusKeyPoint = (index) => {
@@ -176,14 +185,14 @@ const PageCreateEvents = () => {
 
         _temp.splice(removeIndex, 1)
 
-        setForm({...form, keyPoint: _temp})
+        setForm({ ...form, keyPoint: _temp })
     }
 
     const hendleChangeTicket = (e, i) => {
         let _temp = [...form.tickets]
         _temp[i][e.target.name] = e.target.value
 
-        setForm({...form, tickets: _temp})
+        setForm({ ...form, tickets: _temp })
     }
 
     const hendlePlusTicket = () => {
@@ -195,7 +204,7 @@ const PageCreateEvents = () => {
             stock: ''
         })
 
-        setForm({...form, tickets: _temp})
+        setForm({ ...form, tickets: _temp })
     }
 
     const hendleMinusTicket = (index) => {
@@ -204,11 +213,11 @@ const PageCreateEvents = () => {
         _temp.map((_, i) => {
             return i
         })
-        .indexOf(index)
+            .indexOf(index)
 
         _temp.splice(removeIndex, 1)
 
-        setForm({...form, tickets: _temp})
+        setForm({ ...form, tickets: _temp })
     }
 
     return (
@@ -219,6 +228,7 @@ const PageCreateEvents = () => {
                 textThrid={'create'}
             />
             {alert.status && <SAlert type={alert.type} message={alert.message} />}
+            
             <Form
                 form={form}
                 lists={lists}

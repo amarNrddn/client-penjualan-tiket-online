@@ -214,7 +214,7 @@ const EventsForm = ({
                 </SButton>
             </div>
 
-            <SButton  action={hendleSubmit} loading={isLoading} >
+            <SButton action={hendleSubmit} loading={isLoading} >
                 {edit ? 'Ubah' : "Simpan"}
             </SButton>
 

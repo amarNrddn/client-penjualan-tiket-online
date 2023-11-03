@@ -12,6 +12,7 @@ import { setCategory, setKeyword, setTalent } from '../../redux/events/action'
 import { fetchEvents } from '../../redux/events/action'
 import { useDispatch } from 'react-redux'
 import { Col, Container, Row } from 'react-bootstrap'
+import SAlert from '../../components/Alert'
 
 const EventsPage = () => {
   const dispatch = useDispatch()
@@ -43,6 +44,8 @@ const EventsPage = () => {
       >
         Add Events
       </SButton>
+
+      {notif.status && <SAlert type={notif.type} message={notif.message} />}
 
       <Row>
         <Col>
