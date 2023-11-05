@@ -196,6 +196,18 @@ const EventsForm = ({
                             onChange={(e) => hendleChangeTicket(e, i)}
                         />
                     </Col>
+                    <Col>
+                        <TextInputWhitLabel
+                            name='statusEvent'
+                            label={'Status Event'}
+                            placeholder={'Masukan Status'}
+                            value={form.statusEvent}
+                            // options={lists.talents}
+                            // isClearable={true}
+                            // hendleChange={(e) => hendleChange(e)}
+                        />
+
+                    </Col>
 
                     {i !== 0 && (
                         <Col

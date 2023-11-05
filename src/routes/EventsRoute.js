@@ -9,7 +9,7 @@ const EventsRoute = () => {
         <Routes>
             <Route path='/' element={<EventsPage />} />
             <Route path='/create' element={<PageCreateEvents/>} />
-            <Route path='/edit/id' element={<PageEditEvents/>}/>
+            <Route path='/edit/:id' element={<PageEditEvents/>}/>
         </Routes>
     )
 }
