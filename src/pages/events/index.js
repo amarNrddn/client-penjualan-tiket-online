@@ -4,6 +4,8 @@ import SButton from '../../components/Button'
 import SearchInput from '../../components/SSearch'
 import SelectBox from '../../components/SelectBox'
 import Table from '../../components/TableWithAction'
+import SAlert from '../../components/Alert'
+import Swal from 'sweetalert2'
 
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux/es/hooks/useSelector'
@@ -12,7 +14,8 @@ import { setCategory, setKeyword, setTalent } from '../../redux/events/action'
 import { fetchEvents } from '../../redux/events/action'
 import { useDispatch } from 'react-redux'
 import { Col, Container, Row } from 'react-bootstrap'
-import SAlert from '../../components/Alert'
+import { deletData } from '../../utils/fetch'
+import { setNotif } from '../../redux/notif/action'
 
 const EventsPage = () => {
   const dispatch = useDispatch()
@@ -32,7 +35,28 @@ const EventsPage = () => {
   }, [dispatch])
 
   const hendleDelet = (id) => {
-
+    Swal.fire({
+      title: 'Apa kamu Yakin?',
+      text: 'Anda tidak akan dapat mengembalikan ini!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Iya, Hapus',
+      cancelButtonText: 'Batal',
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        await deletData(`/cms/events/${id}`)
+        dispatch(
+          setNotif(
+            true,
+            'success',
+            'Berhasil Menghapus Events'
+          )
+        )
+      }
+      dispatch(fetchEvents())
+    })
   }
 
   return (
