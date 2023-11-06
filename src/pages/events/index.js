@@ -14,7 +14,7 @@ import { setCategory, setKeyword, setTalent } from '../../redux/events/action'
 import { fetchEvents } from '../../redux/events/action'
 import { useDispatch } from 'react-redux'
 import { Col, Container, Row } from 'react-bootstrap'
-import { deletData } from '../../utils/fetch'
+import { deletData, putData } from '../../utils/fetch'
 import { setNotif } from '../../redux/notif/action'
 
 const EventsPage = () => {
@@ -56,6 +56,35 @@ const EventsPage = () => {
         )
       }
       dispatch(fetchEvents())
+    })
+  }
+
+  const hendleChangeStatus = async (id, status) => {
+    Swal.fire({
+      title: 'Apa kamu yakin?',
+      text: '',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Iya, Ubah Status',
+      cancelButtonText: 'Batal',
+    }).then(async (result) => {
+        if(result.isConfirmed) {
+          const payload = {
+            statusEvent: status === 'Published' ? 'Draft' : 'Published'
+          }
+          const res = await putData(`/cms/events/${id}/status`, payload)
+
+          dispatch(
+            setNotif(
+              true,
+              'success',
+              `Berhasil ubah setatus event `
+            )
+          )
+          dispatch(fetchEvents())
+        }
     })
   }
 
@@ -123,6 +152,18 @@ const EventsPage = () => {
         ]}
         editUrl={`/events/edit`}
         deleteAction={(id) => hendleDelet(id)}
+        customAction={(id, status) => {
+          return (
+            <SButton
+              size='sm'
+              variant='primary'
+              className='mx-2'
+              action={() => hendleChangeStatus(id, status)}
+            >
+              Change Status
+            </SButton>
+          )
+        }}
       />
     </Container>
   )

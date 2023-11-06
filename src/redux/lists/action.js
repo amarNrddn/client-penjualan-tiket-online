@@ -7,7 +7,7 @@ import {
     ERROR_FETCHING_LISTS_TALENTS,
     START_FETCHING_LISTS_EVENTS,
     SUCCESS_FETCHING_LISTS_EVENTS,
-    ERROR_FETCHING_LISTS_EVENTS
+    ERROR_FETCHING_LISTS_EVENTS,
 } from './constans'
 import debounce from 'debounce-promise'
 import { getData } from '../../utils/fetch'

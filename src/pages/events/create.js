@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import Form from './form'
-import { Container } from 'react-bootstrap'
 import SBreadcrumbs from '../../components/Breadcrumbs'
-import { useSelector } from 'react-redux/es/hooks/useSelector'
-import { fetchListCategories, fetchListTalents } from '../../redux/lists/action'
+import SAlert from '../../components/Alert'
+
+import { Container } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import { postData } from '../../utils/fetch'
-import SAlert from '../../components/Alert'
+import { useSelector } from 'react-redux/es/hooks/useSelector'
+import { fetchListCategories, fetchListTalents } from '../../redux/lists/action'
 import { setNotif } from '../../redux/notif/action'
 import { useNavigate } from 'react-router-dom'
 
@@ -199,7 +200,7 @@ const PageCreateEvents = () => {
         let _temp = [...form.tickets]
         _temp.push({
             type: '',
-            status: '',
+            statusTicketCategories: '',
             price: '',
             stock: ''
         })

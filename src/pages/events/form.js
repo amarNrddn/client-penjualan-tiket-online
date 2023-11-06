@@ -183,7 +183,7 @@ const EventsForm = ({
                             label={'Stock'}
                             placeholder={'Masukan stoct tiket'}
                             value={ticket.stock}
-                            onChange={(e) => hendleChangeTicket(e, i)}
+                            onChange={(e) => hendleChangeTicket(e)}
                         />
                     </Col>
                     <Col sm={i !== 0 ? 5 : 6}>
@@ -192,21 +192,9 @@ const EventsForm = ({
                             type='text'
                             label={'Status'}
                             placeholder={'Masukan Status'}
-                            value={ticket.status}
+                            value={ticket.statusTicketCategories}
                             onChange={(e) => hendleChangeTicket(e, i)}
                         />
-                    </Col>
-                    <Col>
-                        <TextInputWhitLabel
-                            name='statusEvent'
-                            label={'Status Event'}
-                            placeholder={'Masukan Status'}
-                            value={form.statusEvent}
-                            // options={lists.talents}
-                            // isClearable={true}
-                            // hendleChange={(e) => hendleChange(e)}
-                        />
-
                     </Col>
 
                     {i !== 0 && (

@@ -7,14 +7,14 @@ import {
     ERROR_FETCHING_LISTS_TALENTS,
     START_FETCHING_LISTS_EVENTS,
     SUCCESS_FETCHING_LISTS_EVENTS,
-    ERROR_FETCHING_LISTS_EVENTS
+    ERROR_FETCHING_LISTS_EVENTS,
 } from './constans'
 
 const statuslist = {
     idle: 'idle',
     process: 'process',
     success: 'success',
-    error: 'error'
+    error: 'error',
 }
 
 const initialState = {
@@ -23,7 +23,7 @@ const initialState = {
     talents: [],
     statusTalents: statuslist.idle,
     events: [],
-    statusEvents: statuslist.idle
+    statusEvents: statuslist.idle,
 }
 
 export default function reducer(state = initialState, action) {
