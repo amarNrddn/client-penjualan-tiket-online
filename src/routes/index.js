@@ -9,6 +9,7 @@ import CategoriesRoute from './CategoriesRoute'
 import TalentsRoute from './TalentsRoute'
 import PaymentsRouter from './PaymentsRouter'
 import EventsRoute from './EventsRoute'
+import OrdersRouter from './OrdersRouter'
 
 import { Navigate, Route, Routes } from 'react-router-dom'
 
@@ -38,6 +39,7 @@ const AppRoutes = () => {
                 <Route path="talents/*" element={<TalentsRoute />} />
                 <Route path='payments/*' element={<PaymentsRouter />} />
                 <Route path='events/*' element={<EventsRoute />} />
+                <Route path='orders/*' element={<OrdersRouter/>} />
             </Route>
         </Routes>
     )

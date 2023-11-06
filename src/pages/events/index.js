@@ -70,21 +70,22 @@ const EventsPage = () => {
       confirmButtonText: 'Iya, Ubah Status',
       cancelButtonText: 'Batal',
     }).then(async (result) => {
-        if(result.isConfirmed) {
-          const payload = {
-            statusEvent: status === 'Published' ? 'Draft' : 'Published'
-          }
-          const res = await putData(`/cms/events/${id}/status`, payload)
-
+      if (result.isConfirmed) {
+        const payload = {
+          statusEvent: status === 'Published' ? 'Draft' : 'Published'
+        }
+        const res = await putData(`/cms/events/${id}/status`, payload)
+        if (res.data.data) {
           dispatch(
             setNotif(
               true,
               'success',
-              `Berhasil ubah setatus event `
+              `Berhasil ubah setatus event ${res.data.data.title}`
             )
           )
-          dispatch(fetchEvents())
         }
+        dispatch(fetchEvents())
+      }
     })
   }
 
