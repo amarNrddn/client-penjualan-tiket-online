@@ -53,7 +53,6 @@ const CategoriesEdit = () => {
         );
         navigate('/categories');
         setIsLoading(false);
-        console.log(res.response.data.msg)
       } else {
         setIsLoading(false);
         setAlert({

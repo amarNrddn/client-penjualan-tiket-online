@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { fetchOrders } from '../../redux/orders/action'
+import { fetchOrders, setDate } from '../../redux/orders/action'
 import { Col, Container, Row } from 'react-bootstrap'
 import SBreadcrumbs from '../../components/Breadcrumbs'
 import { useSelector } from 'react-redux'
@@ -9,7 +9,6 @@ import { formatDate } from '../../utils/formatDate'
 import { useState } from 'react'
 import SearchInput from '../../components/SSearch'
 import DateRange from '../../components/inputDate'
-import { setDate } from 'date-fns'
 
 const PageOrders = () => {
     const dispatch = useDispatch()
@@ -32,9 +31,9 @@ const PageOrders = () => {
             <Row>
                 <Col
                     className='cursor-pointer position-relative '
-                    onClick={() => isShowed(true)}
+                    onClick={() => setIsShowed(true)}
                 >
-                    <SearchInput disabled query={displayDate} />
+                    <SearchInput query={displayDate} />
                     {isShowed ? (
                         <DateRange
                             date={orders.date}

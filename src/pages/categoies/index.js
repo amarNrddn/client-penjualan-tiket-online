@@ -9,7 +9,7 @@ import { Container } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCategories } from '../../redux/categories/action';
-import { deletData} from '../../utils/fetch';
+import { deletData } from '../../utils/fetch';
 import { setNotif } from '../../redux/notif/action';
 import { accessCategories } from '../../consts/access';
 
@@ -58,14 +58,17 @@ const CategoriesPage = () => {
             cancelButtonText: 'Batal',
         }).then(async (result) => {
             if (result.isConfirmed) {
-                await deletData(`/cms/categories/${id}`)
-                dispatch(
-                    setNotif(
-                        true,
-                        'success',
-                        `Berhasil menghapus kategori`
-                    )
-                );
+                const res = await deletData(`/cms/categories/${id}`)
+                console.log(res)
+                if (res?.data?.data) {
+                    dispatch(
+                        setNotif(
+                            true,
+                            'success',
+                            `Berhasil menghapus kategori ${res.data.data.name}`
+                        )
+                    );
+                }
                 dispatch(fetchCategories());
             }
         });
