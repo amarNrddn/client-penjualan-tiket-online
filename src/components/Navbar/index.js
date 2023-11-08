@@ -77,7 +77,7 @@ const SNavbar = () => {
                     <NavLink
                         role={role}
                         roles={accessParticipant.lihat}
-                        action={() => navigate('/participant')}
+                        action={() => navigate('/participants')}
                     >
                         Participant
                     </NavLink>
