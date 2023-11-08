@@ -4,7 +4,8 @@ import {
     ERROR_FETCHING_EVENTS,
     SET_KEYWORD,
     SET_CATEGORY,
-    SET_TALENT
+    SET_TALENT, 
+    SET_STATUS_EVENT
 } from './constans'
 
 const statuslist = {

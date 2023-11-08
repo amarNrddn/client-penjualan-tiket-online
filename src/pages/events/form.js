@@ -183,17 +183,29 @@ const EventsForm = ({
                             label={'Stock'}
                             placeholder={'Masukan stoct tiket'}
                             value={ticket.stock}
-                            onChange={(e) => hendleChangeTicket(e)}
+                            onChange={(e) => hendleChangeTicket(e, i)}
                         />
                     </Col>
                     <Col sm={i !== 0 ? 5 : 6}>
-                        <TextInputWhitLabel
-                            name='status'
-                            type='text'
+                        <SelectBox
                             label={'Status'}
-                            placeholder={'Masukan Status'}
+                            placeholder={'Masukan status'}
+                            name='statusTicketCategories'
                             value={ticket.statusTicketCategories}
-                            onChange={(e) => hendleChangeTicket(e, i)}
+                            options={[
+                                {
+                                    label: 'aktif',
+                                    value: true,
+                                    target: { name: 'statusTicketCategories', value: true },
+                                },
+                                {
+                                    label: 'tidak aktif',
+                                    value: false,
+                                    target: { name: 'statusTicketCategories', value: false },
+                                },
+                            ]}
+                            isClearable={true}
+                            hendleChange={(e) => hendleChangeTicket(e, i)}
                         />
                     </Col>
 

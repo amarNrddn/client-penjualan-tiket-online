@@ -84,7 +84,7 @@ const PageEditEvents = () => {
                 target: { name: 'talent', value: res?.data?.data?.talent?._id },
                 value: res?.data?.data?.talent?._id
             },
-            tickets: res.data.data.tickets,
+            tickets: _temp,
             statusEvent: res.data.data.statusEvent
 
         })

@@ -190,10 +190,16 @@ const PageCreateEvents = () => {
     }
 
     const hendleChangeTicket = (e, i) => {
-        let _temp = [...form.tickets]
-        _temp[i][e.target.name] = e.target.value
+        let _temp = [...form.tickets];
 
-        setForm({ ...form, tickets: _temp })
+        if (e.target.name === 'statusTicketCategories') {
+          _temp[i][e.target.name] = e;
+        } else {
+          _temp[i][e.target.name] = e.target.value;
+        }
+    
+        setForm({ ...form, tickets: _temp });
+    
     }
 
     const hendlePlusTicket = () => {
