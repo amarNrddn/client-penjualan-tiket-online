@@ -61,14 +61,16 @@ const TalentsPage = () => {
       cancelButtonText: 'Batal',
     }).then(async (result) => {
       if (result.isConfirmed) {
-        await deletData(`/cms/talents/${id}`)
-        dispatch(
-          setNotif(
-            true,
-            'success',
-            `Berhasil menghapus Talents `
+        const res = await deletData(`/cms/talents/${id}`)
+        if (res.data.data) {
+          dispatch(
+            setNotif(
+              true,
+              'success',
+              `Berhasil menghapus Talents ${res.data.data.name}`
+            )
           )
-        )
+        }
         dispatch(fetchTalents())
       }
     })

@@ -21,7 +21,7 @@ const initialState = {
     date: {
         startDate: new Date(),
         endDate: new Date(),
-        key: 'selction'
+        key: 'selection'
     },
     status: statuslist.idle
 }

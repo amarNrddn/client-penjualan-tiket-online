@@ -49,7 +49,7 @@ export const fetchOrders = () => {
                 limit: getState().orders.limit || 10,
                 // filter berdasarkan tanggal saat ini
                 startDate: moment(
-                    getState().orders.date.startDate || new Date()
+                    getState().orders?.date?.startDate || new Date()
                 ).format('YYYY-MM-DD'),
                 endDate: moment(
                     getState().orders?.date?.endDate || new Date()

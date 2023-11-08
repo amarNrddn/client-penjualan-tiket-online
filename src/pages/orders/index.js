@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react'
-import { fetchOrders, setDate } from '../../redux/orders/action'
-import { Col, Container, Row } from 'react-bootstrap'
+import React, { useEffect, useState } from 'react'
 import SBreadcrumbs from '../../components/Breadcrumbs'
+import SearchInput from '../../components/SSearch'
+import DateRange from '../../components/inputDate'
+import Table from '../../components/TableWithAction'
+
+import { fetchOrders, setDate, setPage } from '../../redux/orders/action'
+import { Col, Container, Row } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { fetchEvents } from '../../redux/events/action'
 import { formatDate } from '../../utils/formatDate'
-import { useState } from 'react'
-import SearchInput from '../../components/SSearch'
-import DateRange from '../../components/inputDate'
 
 const PageOrders = () => {
     const dispatch = useDispatch()
@@ -25,6 +26,7 @@ const PageOrders = () => {
 
     const displayDate = `${orders.date?.startDate ? formatDate(orders.date?.startDate) : ''
         }${orders.date?.endDate ? ' - ' + formatDate(orders.date.endDate) : ''}`;
+        
     return (
         <Container>
             <SBreadcrumbs textSecound={'Orders'} />
@@ -46,8 +48,23 @@ const PageOrders = () => {
                     <Col></Col>
                     <Col></Col>
                 </Col>
-
             </Row>
+
+            <Table
+                status={orders.status}
+                thead={[
+                    'Nama',
+                    'Email',
+                    'Judul',
+                    'Tanggal Event',
+                    'Tanggal Order',
+                    'Tempat',
+                ]}
+                data={orders.data}
+                tbody={['name', 'email', 'title', 'date', 'orderDate', 'venueName']}
+                actionNotDisplay
+                handlePageClick={({ selected }) => dispatch(setPage(selected + 1))}
+            />
         </Container>
     )
 }

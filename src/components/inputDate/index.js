@@ -2,6 +2,9 @@ import * as React from 'react';
 import { DateRange } from 'react-date-range';
 import * as locales from 'react-date-range/dist/locale';
 
+import 'react-date-range/dist/styles.css'; // main css file
+import 'react-date-range/dist/theme/default.css'; // theme css file
+
 export default function IndexDate({ date, onChangeDate, setIsShowed }) {
     React.useEffect(() => {
         document.addEventListener('mousedown', handleClickOutside);
