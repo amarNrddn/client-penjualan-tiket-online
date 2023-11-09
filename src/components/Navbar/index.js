@@ -6,7 +6,9 @@ import {
     accessEvents,
     accessOrders,
     accesPayments,
-    accessParticipant
+    accessParticipant,
+    accessOrganizers,
+    accessAdmin
 } from '../../consts/access'
 
 import { Container, Nav, Navbar } from 'react-bootstrap'
@@ -87,6 +89,20 @@ const SNavbar = () => {
                         action={() => navigate('/orders')}
                     >
                         Orders
+                    </NavLink>
+                    <NavLink
+                        role={role}
+                        roles={accessOrganizers.lihat}
+                        action={() => navigate('/organizers')}
+                    >
+                        Organizers
+                    </NavLink>
+                    <NavLink
+                        role={role}
+                        roles={accessAdmin.lihat}
+                        action={() => navigate('/admin')}
+                    >
+                        Admin
                     </NavLink>
                 </Nav>
 

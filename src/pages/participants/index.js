@@ -6,6 +6,7 @@ const PageParticipans = () => {
   return (
     <Container>
         <SBreadcrumbs textSecound={'Participants'} />
+        <div className="">Participants Comming Soon</div>
     </Container>
   )
 }
