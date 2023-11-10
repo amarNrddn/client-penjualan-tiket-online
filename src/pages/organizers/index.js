@@ -4,9 +4,12 @@ import SBreadcrumbs from '../../components/Breadcrumbs'
 import { accessOrganizers } from '../../consts/access'
 import SButton from '../../components/Button'
 import { useNavigate } from 'react-router-dom'
+import { fetchingOrganizers } from '../../redux/organizers/action'
+import { useDispatch } from 'react-redux'
 
 const PageOrganizers = () => {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const [access, setAccess] = useState({
         tambah: false
     })
@@ -28,6 +31,10 @@ const PageOrganizers = () => {
         checkAccess()
     }, [])
 
+    useEffect(() => {
+        dispatch(fetchingOrganizers())
+    }, [dispatch])
+
     return (
         <Container>
             <SBreadcrumbs textSecound={'Organizers'} />
@@ -38,7 +45,7 @@ const PageOrganizers = () => {
                 Add Organizer
             </SButton>
 
-            
+
         </Container>
 
     )
