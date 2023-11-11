@@ -5,11 +5,16 @@ import { accessOrganizers } from '../../consts/access'
 import SButton from '../../components/Button'
 import { useNavigate } from 'react-router-dom'
 import { fetchingOrganizers } from '../../redux/organizers/action'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import Table from '../../components/TableWithAction'
+import SAlert from '../../components/Alert'
 
 const PageOrganizers = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const notif = useSelector((state) => state.notif)
+    const users = useSelector((state) => state.organizers)
+
     const [access, setAccess] = useState({
         tambah: false
     })
@@ -45,7 +50,14 @@ const PageOrganizers = () => {
                 Add Organizer
             </SButton>
 
-
+            {notif.status && <SAlert type={notif.typeNotif} message={notif.message} />}
+            
+            <Table
+                status={users.status}
+                thead={['Nama', 'Email', 'Role']}
+                data={users.data}
+                tbody={['name', 'email', 'role']}
+            />
         </Container>
 
     )

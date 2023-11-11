@@ -42,9 +42,13 @@ export const fetchingOrganizers = () => {
 
             let res = await debounceFtechingOrganizers('/cms/users')
 
+            const organizer = res.data.data
+                .filter((item) => item.role === 'organizer')
+                .map(({ _id, name, email, role }) => ({ _id, name, email, role }))
+
             dispatch(
                 successFetchingOrganizres({
-                    users: res.data.data
+                    users: organizer
                 })
             )
         } catch (error) {
