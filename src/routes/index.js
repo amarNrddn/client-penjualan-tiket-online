@@ -14,6 +14,7 @@ import ParticipantsRoute from './ParticipantsRoute'
 
 import { Navigate, Route, Routes } from 'react-router-dom'
 import OrganizersRoute from './OrganizersRoute'
+import AdminRoute from './AdminRoute'
 
 const AppRoutes = () => {
     return (
@@ -44,6 +45,7 @@ const AppRoutes = () => {
                 <Route path='orders/*' element={<OrdersRouter />} />
                 <Route path='participants/*' element={<ParticipantsRoute />} />
                 <Route path='organizers/*' element={<OrganizersRoute />} />
+                <Route path='admin/*' element={<AdminRoute />}/>
             </Route>
         </Routes>
     )
