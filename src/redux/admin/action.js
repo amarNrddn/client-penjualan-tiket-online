@@ -30,25 +30,31 @@ export const errorFetchingAdmin = () => {
 
 export const fetchAdmin = () => {
     return async (dispatch) => {
-       dispatch(startFetchingAdmin())
+        dispatch(startFetchingAdmin())
 
         try {
             setTimeout(() => {
-               dispatch(clearNotif())
+                dispatch(clearNotif())
             }, 3000)
 
             let res = await debounceFtechAdmin('/cms/users')
-            
-            const admin = res.data.data 
+
+            const admin = res.data.data
                 .filter((item) => item.role === 'admin')
-                .map(({_id, name, email}) => ({_id, email, name}))
-           dispatch(
+                .map(({ _id, name, email, role }) => ({
+                    _id,
+                    name,
+                    email,
+                    role
+                }))
+
+            dispatch(
                 successFetchingAdmin({
                     admin: admin
                 })
             )
         } catch (error) {
-           dispatch(errorFetchingAdmin())
+            dispatch(errorFetchingAdmin())
         }
     }
 }

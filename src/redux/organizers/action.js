@@ -44,7 +44,12 @@ export const fetchingOrganizers = () => {
 
             const organizer = res.data.data
                 .filter((item) => item.role === 'organizer')
-                .map(({ _id, name, email, role }) => ({ _id, name, email, role }))
+                .map(({ _id, name, email, role }) => ({
+                    _id,
+                    name,
+                    email,
+                    role
+                }))
 
             dispatch(
                 successFetchingOrganizres({
