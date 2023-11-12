@@ -54,7 +54,7 @@ const PageCreateAdmin = () => {
                 navigate('/admin')
             } else {
                 setIsLoading(false)
-                SAlert({
+                setAlert({
                     ...alert,
                     status: true,
                     type: 'danger',
@@ -72,7 +72,7 @@ const PageCreateAdmin = () => {
                 urlSecound={'/admin'}
                 textThrid={'create'}
             />
-
+            {alert.status && <SAlert type={alert.type} message={alert.message}  />}
             <Form
                 form={form}
                 hendleChange={hendleChange}
