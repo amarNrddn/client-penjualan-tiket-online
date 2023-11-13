@@ -11,10 +11,10 @@ import PaymentsRouter from './PaymentsRouter'
 import EventsRoute from './EventsRoute'
 import OrdersRouter from './OrdersRouter'
 import ParticipantsRoute from './ParticipantsRoute'
-
-import { Navigate, Route, Routes } from 'react-router-dom'
 import OrganizersRoute from './OrganizersRoute'
 import AdminRoute from './AdminRoute'
+
+import { Navigate, Route, Routes } from 'react-router-dom'
 
 const AppRoutes = () => {
     return (

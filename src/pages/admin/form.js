@@ -2,6 +2,7 @@ import React from 'react'
 import { Form } from 'react-bootstrap'
 import TextInputWhitLabel from '../../components/TextInputWhitLabel'
 import SButton from '../../components/Button'
+import SelectBox from '../../components/SelectBox'
 
 const form = ({
     form,
@@ -43,14 +44,21 @@ const form = ({
                 value={form.confirmPassword}
                 onChange={hendleChange}
             />
-            <TextInputWhitLabel
+            
+            <SelectBox
                 name='role'
-                type='text'
-                label={'Role'}
-                placeholder={'Masukan Role'}
+                placeholder={'Masukan Admin'}
                 value={form.role}
-                onChange={hendleChange}
-            />
+                label={'Role'}
+                options={[
+                    {
+                        label: 'admin',
+                        value: 'admin',
+                        target: {name: 'role', value: 'admin'}
+                    }
+                ]}
+                hendleChange={(e) => hendleChange(e)}
+             />
 
             <SButton action={hendleSubmit} loading={isLoading}>
                 Simpan

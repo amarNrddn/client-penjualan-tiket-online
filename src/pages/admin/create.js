@@ -26,7 +26,11 @@ const PageCreateAdmin = () => {
     })
 
     const hendleChange = (e) => {
-        setForm({ ...form, [e.target.name]: e.target.value })
+        if (e.target.name === 'role') {
+            setForm({ ...form, [e.target.name]: e })
+        } else {
+            setForm({ ...form, [e.target.name]: e.target.value })
+        }
     }
 
     const hendleSubmit = async () => {
@@ -37,7 +41,7 @@ const PageCreateAdmin = () => {
                 email: form.email,
                 password: form.password,
                 confirmPassword: form.confirmPassword,
-                role: form.role
+                role: form.role.value
             }
 
             const res = await postData('/cms/users', payload)
@@ -72,7 +76,7 @@ const PageCreateAdmin = () => {
                 urlSecound={'/admin'}
                 textThrid={'create'}
             />
-            {alert.status && <SAlert type={alert.type} message={alert.message}  />}
+            {alert.status && <SAlert type={alert.type} message={alert.message} />}
             <Form
                 form={form}
                 hendleChange={hendleChange}

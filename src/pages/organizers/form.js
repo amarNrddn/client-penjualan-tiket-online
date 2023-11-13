@@ -2,6 +2,7 @@ import React from 'react'
 import { Form } from 'react-bootstrap'
 import TextInputWhitLabel from '../../components/TextInputWhitLabel'
 import SButton from '../../components/Button'
+import SelectBox from '../../components/SelectBox'
 
 const OrganizersForm = ({
     hendleChange,
@@ -31,7 +32,7 @@ const OrganizersForm = ({
             />
 
             <TextInputWhitLabel
-                name = 'email'
+                name='email'
                 label={'Email'}
                 placeholder={'Masukan Email'}
                 type='email'
@@ -57,13 +58,20 @@ const OrganizersForm = ({
                 onChange={hendleChange}
             />
 
-            <TextInputWhitLabel 
-                name='role'
+            <SelectBox
                 label={'Role'}
                 placeholder={'Masukan Role'}
-                type='text'
+                name='role'
                 value={form.role}
-                onChange={hendleChange}
+                options={[
+                    {
+                        label: 'organizer',
+                        value: 'organizer',
+                        target: { name: 'role', value: 'organizer' }
+                    }
+                ]}
+                isClearable={true}
+                hendleChange={(e) => hendleChange(e)}
             />
 
             <SButton
