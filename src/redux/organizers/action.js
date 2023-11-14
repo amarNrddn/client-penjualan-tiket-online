@@ -1,7 +1,8 @@
 import {
     START_FETCHING_ORGANIZER,
     SUCCESS_FETCHING_ORGANIZERS,
-    ERROR_FETCHING_ORGANIZERS
+    ERROR_FETCHING_ORGANIZERS,
+    SET_PAGE
 } from './constans'
 
 import debounce from 'debounce-promise'
@@ -16,10 +17,11 @@ export const startFetchingOrganizers = () => {
     }
 }
 
-export const successFetchingOrganizres = ({ users }) => {
+export const successFetchingOrganizres = ({ users, pages }) => {
     return {
         type: SUCCESS_FETCHING_ORGANIZERS,
-        users
+        users,
+        pages
     }
 }
 
@@ -30,7 +32,7 @@ export const errorFetchingOrganizers = () => {
 }
 
 export const fetchingOrganizers = () => {
-    return async (dispatch) => {
+    return async (dispatch, getState) => {
         dispatch(startFetchingOrganizers())
 
         try {
@@ -40,9 +42,9 @@ export const fetchingOrganizers = () => {
                 )
             }, 5000)
 
-            let res = await debounceFtechingOrganizers('/cms/users')
-
-            const organizer = res.data.data
+            let res = await debounceFtechingOrganizers(`/cms/users`)
+           
+            const organizer = res.data.data.user
                 .filter((item) => item.role === 'organizer')
                 .map(({ _id, name, email, role }) => ({
                     _id,
@@ -53,11 +55,19 @@ export const fetchingOrganizers = () => {
 
             dispatch(
                 successFetchingOrganizres({
-                    users: organizer
+                    users: organizer,
+                    pages: res.data.data.pages
                 })
             )
         } catch (error) {
             dispatch(errorFetchingOrganizers())
         }
+    }
+}
+
+export const setPage = (page) => {
+    return {
+        type: SET_PAGE,
+        page
     }
 }

@@ -1,7 +1,8 @@
 import {
     START_FETCHING_ORGANIZER,
     SUCCESS_FETCHING_ORGANIZERS,
-    ERROR_FETCHING_ORGANIZERS
+    ERROR_FETCHING_ORGANIZERS,
+    SET_PAGE
 } from './constans'
 
 const statuslist = {
@@ -13,6 +14,9 @@ const statuslist = {
 
 const initialState = {
     data: [],
+    page: 1,
+    limit: 2,
+    pages: 1,
     status: statuslist.idle
 }
 
@@ -24,8 +28,15 @@ export default function reducer(state = initialState, action) {
         case SUCCESS_FETCHING_ORGANIZERS:
             return {
                 ...state,
+                data: action.users,
+                pages: action.pages,
                 status: statuslist.success,
-                data: action.users
+            }
+
+        case SET_PAGE: 
+            return {
+                ...state,
+                page: action.page
             }
 
         case ERROR_FETCHING_ORGANIZERS:

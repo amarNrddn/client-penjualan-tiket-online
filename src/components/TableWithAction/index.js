@@ -1,6 +1,7 @@
 import React from 'react'
 import Tbody from '../TbodyWIthAction'
 import Thead from '../Thead'
+import Pagination from '../Pagination'
 
 import { Table } from 'react-bootstrap'
 
@@ -14,6 +15,7 @@ const TableWithAction = ({
     editUrl,
     deleteAction,
     customAction,
+    hendlePageClick,
     status,
     pages,
 }) => {
@@ -31,11 +33,11 @@ const TableWithAction = ({
                     customAction={customAction}
                 />
             </Table>
-            {/* {!withoutPagination && data.length ? (
-                <Pagination pages={pages} handlePageClick={handlePageClick} />
+            {!withoutPagination && data.length ? (
+                <Pagination pages={pages} hendlePageClick={hendlePageClick} />
             ) : (
                 ''
-            )} */}
+            )}
         </>
     )
 }

@@ -16,7 +16,7 @@ const statuslist = {
 const initialState = {
     data: [],
     page: 1,
-    limit: 1,
+    limit: 4,
     pages: 1,
     date: {
         startDate: new Date(),
@@ -35,7 +35,7 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 data: action.orders,
-                page: action.page,
+                pages: action.pages,
                 status: statuslist.success
             }
 

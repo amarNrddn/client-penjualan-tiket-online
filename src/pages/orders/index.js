@@ -62,8 +62,9 @@ const PageOrders = () => {
                 ]}
                 data={orders.data}
                 tbody={['name', 'email', 'title', 'date', 'orderDate', 'venueName']}
+                pages={orders.pages}
                 actionNotDisplay
-                handlePageClick={({ selected }) => dispatch(setPage(selected + 1))}
+                hendlePageClick={({ selected }) => dispatch(setPage(selected + 1))}
             />
         </Container>
     )

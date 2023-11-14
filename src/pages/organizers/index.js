@@ -4,7 +4,7 @@ import SBreadcrumbs from '../../components/Breadcrumbs'
 import { accessOrganizers } from '../../consts/access'
 import SButton from '../../components/Button'
 import { useNavigate } from 'react-router-dom'
-import { fetchingOrganizers } from '../../redux/organizers/action'
+import { fetchingOrganizers, setPage } from '../../redux/organizers/action'
 import { useDispatch, useSelector } from 'react-redux'
 import Table from '../../components/TableWithAction'
 import SAlert from '../../components/Alert'
@@ -38,7 +38,7 @@ const PageOrganizers = () => {
 
     useEffect(() => {
         dispatch(fetchingOrganizers())
-    }, [dispatch])
+    }, [dispatch, users.page])
 
     return (
         <Container>
@@ -57,6 +57,9 @@ const PageOrganizers = () => {
                 thead={['Nama', 'Email', 'Role']}
                 data={users.data}
                 tbody={['name', 'email', 'role']}
+                pages={users.pages}
+                actionNotDisplay
+                handlePageClick={({ selected }) => dispatch(setPage(selected + 1))}
             />
         </Container>
 

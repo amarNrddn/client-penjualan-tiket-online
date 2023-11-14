@@ -19,11 +19,11 @@ export const startFetchingOrders = () => {
     }
 }
 
-export const successFetchingOrders = ({ orders, page }) => {
+export const successFetchingOrders = ({ orders, pages }) => {
     return {
         type: SUCCESS_FETCHING_ORDERS,
         orders,
-        page
+        pages
     }
 }
 
@@ -45,6 +45,7 @@ export const fetchOrders = () => {
             }, 5000)
 
             let params = {
+                // set limit page
                 page: getState().orders.page || 1,
                 limit: getState().orders.limit || 10,
                 // filter berdasarkan tanggal saat ini
@@ -74,7 +75,7 @@ export const fetchOrders = () => {
             dispatch(
                 successFetchingOrders({
                     orders: _temp,
-                    page: res.data.data.pages
+                    pages: res.data.data.pages
                 })
             )
         } catch (error) {
