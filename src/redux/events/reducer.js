@@ -4,8 +4,8 @@ import {
     ERROR_FETCHING_EVENTS,
     SET_KEYWORD,
     SET_CATEGORY,
-    SET_TALENT, 
-    SET_STATUS_EVENT
+    SET_TALENT,
+    SET_PAGE
 } from './constans'
 
 const statuslist = {
@@ -20,6 +20,9 @@ const initialState = {
     keyword: '',
     talent: '',
     category: '',
+    page: 1,
+    limit: 10,
+    pages: 1,
     status: statuslist.idle
 }
 
@@ -32,7 +35,8 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 status: statuslist.success,
-                data: action.events
+                data: action.events,
+                pages: action.pages
             }
 
         case SET_KEYWORD:
@@ -43,6 +47,13 @@ export default function reducer(state = initialState, action) {
 
         case SET_TALENT:
             return { ...state, talent: action.talent }
+
+        case SET_PAGE: {
+            return {
+                ...state,
+                page: action.page
+            }
+        }
 
         case ERROR_FETCHING_EVENTS:
             return { ...state, status: statuslist.error }

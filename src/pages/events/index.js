@@ -10,7 +10,7 @@ import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux/es/hooks/useSelector'
 import { fetchListCategories, fetchListTalents } from '../../redux/lists/action'
-import { setCategory, setKeyword, setTalent } from '../../redux/events/action'
+import { setCategory, setKeyword, setTalent, setPage } from '../../redux/events/action'
 import { fetchEvents } from '../../redux/events/action'
 import { useDispatch } from 'react-redux'
 import { Col, Container, Row } from 'react-bootstrap'
@@ -27,7 +27,7 @@ const EventsPage = () => {
 
   useEffect(() => {
     dispatch(fetchEvents())
-  }, [dispatch, events.keyword, events.category, events.talent])
+  }, [dispatch, events.keyword, events.category, events.talent, events.page])
 
   useEffect(() => {
     dispatch(fetchListCategories())
@@ -165,6 +165,9 @@ const EventsPage = () => {
             </SButton>
           )
         }}
+        pages={events.pages}
+        actionNotDisplay
+        hendlePageClick={({ selected }) => dispatch(setPage(selected + 1))}
       />
     </Container>
   )

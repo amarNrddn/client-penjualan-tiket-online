@@ -5,6 +5,7 @@ import {
     SET_KEYWORD,
     SET_CATEGORY,
     SET_TALENT, 
+    SET_PAGE
 } from './constans'
 import { clearNotif } from '../notif/action'
 import { getData } from '../../utils/fetch'
@@ -18,10 +19,11 @@ export const startFetchingEvents = () => {
     }
 }
 
-export const successFetchingEvents = ({ events }) => {
+export const successFetchingEvents = ({ events, pages }) => {
     return {
         type: SUCCESS_FETCHING_EVENTS,
-        events
+        events,
+        pages
     }
 }
 
@@ -41,6 +43,8 @@ export const fetchEvents = () => {
             }, 5000)
 
             let params = {
+                page: getState().events.page || 1,
+                limit: getState().events.limit || 10,
                 keyword: getState().events.keyword,
                 category: getState().events?.category?.value || '',
                 talent: getState().events?.talent?.value || ''
@@ -48,14 +52,15 @@ export const fetchEvents = () => {
 
             let res = await debounceFetchEvents('/cms/events', params)
 
-            res.data.data.forEach((res) => {
+            res.data.data.event.forEach((res) => {
                 res.categoryName = res?.category?.name ?? ''
                 res.talentName = res?.talent?.name ?? '_'
             })
 
             dispatch(
                 successFetchingEvents({
-                    events: res.data.data
+                    events: res.data.data.event,
+                    pages: res.data.data.pages
                 })
             )
         } catch (error) {
@@ -82,5 +87,12 @@ export const setTalent = (talent) => {
     return {
         type: SET_TALENT,
         talent
+    }
+}
+
+export const setPage = (page) => {
+    return {
+        type: SET_PAGE,
+        page
     }
 }

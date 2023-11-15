@@ -42,7 +42,12 @@ export const fetchingOrganizers = () => {
                 )
             }, 5000)
 
-            let res = await debounceFtechingOrganizers(`/cms/users`)
+            const payload = {
+                page: getState().users?.page || 1,
+                limit: getState().users?.limit || 10
+            }
+
+            let res = await debounceFtechingOrganizers(`/cms/users`, payload)
            
             const organizer = res.data.data.user
                 .filter((item) => item.role === 'organizer')

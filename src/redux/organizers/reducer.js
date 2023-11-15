@@ -15,7 +15,7 @@ const statuslist = {
 const initialState = {
     data: [],
     page: 1,
-    limit: 2,
+    limit: 1,
     pages: 1,
     status: statuslist.idle
 }
