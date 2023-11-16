@@ -166,7 +166,7 @@ const EventsPage = () => {
           )
         }}
         pages={events.pages}
-        actionNotDisplay
+        // actionNotDisplay
         hendlePageClick={({ selected }) => dispatch(setPage(selected + 1))}
       />
     </Container>

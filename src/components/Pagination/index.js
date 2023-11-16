@@ -1,8 +1,7 @@
 import React from 'react'
 import ReactPaginate from 'react-paginate'
 
-const Pagination = (props) => {
-    const { pages, hendlePageClick, page = 1 } = props;
+const Pagination = ({ pages, hendlePageClick, page = 1 }) => {
     return (
         <ReactPaginate
             previousLabel={'previous'}

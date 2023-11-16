@@ -36,13 +36,20 @@ const Sigin = () => {
 
         try {
             const response = res
-            dispatch(userLogin(response.data.data.token, response.data.data.role))
+            dispatch(
+                userLogin(
+                    response.data.data.token, 
+                    response.data.data.role,
+                    response.data.data.refreshToken,
+                    response.data.data.email,
+                )
+            )
             setLoading(false)
             navigate('/')
         } catch (error) {
             const failed = res.response.data.msg
             setLoading(false)
-            if(failed) {
+            if (failed) {
                 setAlert({
                     status: true,
                     message: failed,

@@ -39,7 +39,7 @@ export const fetchAdmin = () => {
 
             let res = await debounceFtechAdmin('/cms/users')
 
-            const admin = res.data.data
+            const admin = res.data.data.user
                 .filter((item) => item.role === 'admin')
                 .map(({ _id, name, email, role }) => ({
                     _id,
