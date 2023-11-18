@@ -8,12 +8,14 @@ export const getData = async (url, params) => {
             ? JSON.parse(localStorage.getItem('auth'))
             : {};
 
-        return await axios.get(`${config.api_host_dev}${url}`, {
+        const res =  await axios.get(`${config.api_host_dev}${url}`, {
             params,
             headers: {
                 Authorization: `Bearer ${token}`
             }
         })
+
+        return res
     } catch (error) {
         return handleError(error)
     }
@@ -25,12 +27,14 @@ export const postData = async (url, payload, formData) => {
             ? JSON.parse(localStorage.getItem('auth'))
             : {}
 
-        return await axios.post(`${config.api_host_dev}${url}`, payload, {
+        const res = await axios.post(`${config.api_host_dev}${url}`, payload, {
             headers: {
                 Authorization: `Bearer ${token}`,
                 'Content-Type': formData ? 'multipart/form-data' : 'application/json',
             }
         })
+
+        return res
     } catch (error) {
         return handleError(error)
     }
