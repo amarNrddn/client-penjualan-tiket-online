@@ -171,6 +171,7 @@ const EventsForm = ({
                         <TextInputWhitLabel
                             name='price'
                             type='number'
+                            label = "Harga"
                             placeholder={'Masukan Harga'}
                             value={ticket.price}
                             onChange={(e) => hendleChangeTicket(e, i)}
