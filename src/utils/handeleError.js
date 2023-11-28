@@ -29,7 +29,7 @@ const handleError = (error) => {
         return axios(originalRequest);
       })
       .catch((err) => {
-        window.location.href = '/login';
+        window.location.href = '/sigin';
         localStorage.removeItem('auth');
       });
   }
